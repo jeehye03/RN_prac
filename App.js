@@ -14,8 +14,10 @@ import { theme } from "./colors";
 
 export default function App() {
   const [working, setWorking] = useState(true);
+  const [text, setText] = useState("");
   const travel = () => setWorking(false);
   const work = () => setWorking(true);
+  const onChangeText = (payload) => console.log(payload);
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -43,6 +45,8 @@ export default function App() {
       </View>
 
       <TextInput
+        onChangeText={onChangeText}
+        value={text}
         returnKeyType="send"
         placeholder={working ? "Add a To Do" : "Where do you want to go?"}
         style={styles.input}
