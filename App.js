@@ -56,10 +56,10 @@ export default function App() {
   // console.log(toDos);
 
   const deleteToDo = async (key) => {
-    Alert.alert("Delete To Do?", "Are u sure?", [
-      { text: "Cancel" },
+    Alert.alert("삭제", "삭제할거야?", [
+      { text: "취소" },
       {
-        text: "I'm Sure",
+        text: "삭제",
         style: "destructive",
         onPress: () => {
           const newToDos = { ...toDos };
@@ -70,6 +70,16 @@ export default function App() {
       },
     ]);
     return;
+  };
+
+  const checkToDo = async (key) => {
+    Alert.alert("완료", "완료했니", [
+      { text: "아니" },
+      {
+        text: "완료!",
+        onPress: () => {},
+      },
+    ]);
   };
 
   return (
@@ -103,7 +113,7 @@ export default function App() {
         onChangeText={onChangeText}
         returnKeyType="done"
         value={text}
-        placeholder={working ? "Add a To Do" : "Where do you want to go?"}
+        placeholder={working ? "오늘의 할 일 적기" : "여행가고 싶은 곳 적기"}
         style={styles.input}
       />
       <ScrollView>
@@ -160,5 +170,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "500",
+  },
+  toDoIcon: {
+    flexDirection: "row",
   },
 });
